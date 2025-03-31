@@ -1,4 +1,4 @@
-# node-expressjs-template
+# node-express-ts-template
 
 Express JS Application with Typescript
 
