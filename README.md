@@ -22,9 +22,35 @@ Build the app and run production code:
 pnpm prod
 ```
 
-### Features
+## Features
 
 - Express app configured
 - Handled loading of environment variables
 - Preconfigured logger middleware - [winston](https://www.npmjs.com/package/winston) for logging request details and errors 
 - Docker image
+
+
+## Update Dependencies
+
+[npm-check-updates](https://www.npmjs.com/package/npm-check-updates) is an excellent tool for detecting the latest versions of dependencies and updating them in your `package.json`. It simplifies the process of keeping your project up to date with the latest package versions.
+
+### Installation
+
+Install globally to use **npm-check-updates**
+
+```
+npm install -g npm-check-updates
+```
+
+To update packages while also understanding the impact of the changes, run:
+
+```bash
+ncu --format group -u
+```
+This groups updates by type (**major**, **minor**, **patch**), making it easier to assess potential risks before upgrading.
+
+Update all dependencies:
+
+```
+
+```
