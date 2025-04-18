@@ -25,14 +25,14 @@ app.get('/', (_: Request, response: Response) => {
 
 routesList.forEach(route => app.use(route.path, route.router));
 
-/* 404 Handler - To be written at last */
-app.get('*', (req: Request, response: Response) => {
-  const notFoundError = `No route exists for this endpoint: "${req.originalUrl}"`;
-  return sendErrorResponse(response, {
-    statusCode: 404,
-    message: '404 - Not Found',
-    error: notFoundError
-  });
-});
+// /* 404 Handler - To be written at last */
+// app.all('*', (req: Request, res: Response) => {
+//   const notFoundError = `No route exists for this endpoint: "${req.originalUrl}"`;
+//   return sendErrorResponse(res, {
+//     statusCode: 404,
+//     message: '404 - Not Found',
+//     error: notFoundError,
+//   });
+// });
 
 export default app;
