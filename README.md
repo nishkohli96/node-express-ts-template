@@ -4,10 +4,14 @@ Express JS Application with Typescript
 
 ## Running the app
 
-**Install [pnpm](https://pnpm.io/), if it isn’t already on your system.**
+The `setup.sh` script sets up the project
+
+- Ensures [pnpm](https://pnpm.io/) and [pm2](https://pm2.keymetrics.io/) are installed globally.
+- Installs all project dependencies.
+- Builds the app for the first time.
 
 ```bash
-npm i -g pnpm@latest
+pnpm set-up
 ```
 
 Run the app in `development` environment:
