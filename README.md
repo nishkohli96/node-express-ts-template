@@ -4,14 +4,22 @@ Express JS Application with Typescript
 
 ## Running the app
 
-In dev mode,
+**Install [pnpm](https://pnpm.io/), if it isn’t already on your system.**
+
 ```bash
-yarn dev
+npm i -g pnpm@latest
 ```
 
-Build the app and run production code
+Run the app in `development` environment:
+
 ```bash
-yarn prod
+pnpm dev
+```
+
+Build the app and run production code:
+
+```bash
+pnpm prod
 ```
 
 ### Features

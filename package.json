@@ -1,13 +1,13 @@
 {
   "name": "node-express-ts-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Nishant Kohli",
   "private": true,
   "scripts": {
     "dev": "nodemon --exec 'ts-node -r tsconfig-paths/register src/index.ts'",
     "build": "rimraf dist && tsc && tsc-alias",
     "start": "node dist/index.js",
-    "prod": "yarn build && yarn start",
+    "prod": "pnpm build && pnpm start",
     "lint": "eslint --fix ."
   },
   "dependencies": {
