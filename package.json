@@ -24,7 +24,6 @@
   "devDependencies": {
     "@nish1896/eslint-flat-config": "^2.0.2",
     "@types/cors": "^2.8.17",
-    "@types/express": "4.17.21",
     "@types/node": "^22.14.1",
     "eslint": "^9.24.0",
     "nodemon": "^3.1.9",

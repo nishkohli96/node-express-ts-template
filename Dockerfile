@@ -1,5 +1,5 @@
 # === Base Image (Builder) ===
-FROM node:22.14.0-alpine3.20 AS builder
+FROM node:23.11.0-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -18,7 +18,7 @@ COPY --chown=node:node . .
 RUN pnpm build
 
 # === Final Image (Production) ===
-FROM node:22.14.0-alpine3.20 AS runner
+FROM node:23.11.0-alpine AS runner
 
 # Set working directory
 WORKDIR /app
