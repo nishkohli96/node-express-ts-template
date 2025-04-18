@@ -49,8 +49,8 @@ ncu --format group -u
 ```
 This groups updates by type (**major**, **minor**, **patch**), making it easier to assess potential risks before upgrading.
 
-Update all dependencies:
+Update all dependencies && Check build status after updating all packages:
 
 ```
-
+pnpm install-updates && pnpm build
 ```
