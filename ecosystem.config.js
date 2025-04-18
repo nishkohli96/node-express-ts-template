@@ -1,14 +1,19 @@
-const pkgJson= require('./package.json');
-console.log('name: ', pkgJson.name);
+const { name } = require('./package.json');
+
+/**
+ * You can use either env_file to read variables from,
+ * declare env variables in this file itself or do both.
+ * PM2 will load all variables from env_file and override
+ * any of them with keys from env.
+ */
 
 module.exports = {
   apps: [
     {
-      name: 'hdok',
-      script: 'dist/main.js',
-      instances: 1,
-      exec_mode: 'fork', // or 'cluster' if you want clustering
-      watch: false,
+      name,
+      script: 'dist/index.js',
+      watch: true,
+			env_file: '.env',
       env: {
         NODE_ENV: 'production',
       },
