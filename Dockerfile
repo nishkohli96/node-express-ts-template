@@ -5,7 +5,7 @@ FROM node:23.11.0-alpine AS builder
 WORKDIR /app
 
 # Copy package files first (for caching dependencies)
-COPY --chown=node:node package.json tsconfig.json pnpm.lock ./
+COPY --chown=node:node package.json tsconfig.json pnpm-lock.yaml ./
 
 # Install dependencies
 RUN npm i -g pnpm
@@ -24,9 +24,10 @@ FROM node:23.11.0-alpine AS runner
 WORKDIR /app
 
 # Copy built application & dependencies from builder stage
-COPY --from=builder /app/package.json /app/pnpm.lock ./
+COPY --from=builder /app/package.json /app/pnpm-lock.yaml /app/ecosystem.config.js ./
 COPY --from=builder /app/dist ./dist
 
+RUN npm i -g pnpm pm2
 RUN pnpm install --frozen-lockfile --production
 
 # Expose the port (change if necessary)
