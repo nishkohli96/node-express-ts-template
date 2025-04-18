@@ -1,10 +1,8 @@
 const { name } = require('./package.json');
 
 /**
- * You can use either env_file to read variables from,
- * declare env variables in this file itself or do both.
- * PM2 will load all variables from env_file and override
- * any of them with keys from env.
+ * For pm2 usage, esp in docker env, refer the notes
+ * in README.md.
  */
 
 module.exports = {
@@ -13,6 +11,7 @@ module.exports = {
       name,
       script: 'dist/index.js',
       watch: true,
+      ignore_watch: ['logs'],
 			env_file: '.env',
       env: {
         NODE_ENV: 'production',
