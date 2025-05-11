@@ -1,18 +1,24 @@
 # node-express-ts-template
 
-Express JS Application with Typescript
+Express JS Application with Typescript with the following features:
 
-## Running the app
+- Express **v5** app configured
+- Handled loading of environment variables
+- Preconfigured logger middleware - [winston](https://www.npmjs.com/package/winston) for logging request details and errors 
+- Docker image
+- Run in production environment with `pm2`
 
-The `setup.sh` script sets up the project
-
-- Ensures [pnpm](https://pnpm.io/) and [pm2](https://pm2.keymetrics.io/) are installed globally.
-- Installs all project dependencies.
-- Builds the app for the first time.
+## Getting Started
 
 ```bash
-pnpm set-up
+sh setup.sh
 ```
+
+The above command executes the `setup.sh` script to set up the project by:
+
+- Ensuring [pnpm](https://pnpm.io/), [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) and [pm2](https://pm2.keymetrics.io/) are installed globally.
+- Installing all project dependencies.
+- Building the app for the first time.
 
 Run the app in `development` environment:
 
@@ -26,36 +32,24 @@ Build the app and run production code:
 pnpm prod
 ```
 
-## Features
-
-- Express app configured
-- Handled loading of environment variables
-- Preconfigured logger middleware - [winston](https://www.npmjs.com/package/winston) for logging request details and errors 
-- Docker image
-
-
 ## Update Dependencies
 
 [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) is an excellent tool for detecting the latest versions of dependencies and updating them in your `package.json`. It simplifies the process of keeping your project up to date with the latest package versions.
 
 ### Installation
 
-Install globally to use **npm-check-updates**
-
-```
-npm install -g npm-check-updates
-```
+The `setup.sh` script globally installs **npm-check-updates**.
 
 To update packages while also understanding the impact of the changes, run:
 
 ```bash
-ncu --format group -u
+pnpm check-updates
 ```
 This groups updates by type (**major**, **minor**, **patch**), making it easier to assess potential risks before upgrading.
 
-Update all dependencies && Check build status after updating all packages:
+Update all dependencies && check build status after updating all packages:
 
-```
+```bash
 pnpm install-updates && pnpm build
 ```
 

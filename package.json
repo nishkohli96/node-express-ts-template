@@ -1,6 +1,6 @@
 {
   "name": "node-express-ts-template",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Nishant Kohli",
   "private": true,
   "engines": {
@@ -14,6 +14,7 @@
     "start:node": "node dist/index.js",
     "prod": "pnpm build && pnpm start",
     "lint": "eslint --fix .",
+    "prepare": "husky || true",
     "check-updates": "ncu --format group -u",
     "install-updates": "pnpm check-updates && pnpm install"
   },
@@ -24,16 +25,16 @@
     "winston": "3.17.0"
   },
   "devDependencies": {
-    "@nish1896/eslint-flat-config": "^2.0.2",
-    "@types/cors": "^2.8.17",
-    "@types/node": "^22.14.1",
-    "eslint": "^9.24.0",
-    "nodemon": "^3.1.9",
+    "@nish1896/eslint-flat-config": "^2.0.4",
+    "@types/cors": "^2.8.18",
+    "@types/node": "^22.15.17",
+    "eslint": "^9.26.0",
+    "nodemon": "^3.1.10",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
-    "tsc-alias": "^1.8.15",
+    "tsc-alias": "^1.8.16",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   },
-  "packageManager": "pnpm@10.8.1"
+  "packageManager": "pnpm@10.10.0"
 }
