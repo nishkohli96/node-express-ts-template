@@ -8,6 +8,8 @@ Express JS Application with Typescript with the following features:
 - Docker image
 - Run in production environment with `pm2`
 
+**If you're setting up a frontend repository, you can use my [nextjs-template](https://github.com/nishkohli96/nextjs-template/pull/4) as a starting point.**
+
 ## Getting Started
 
 ```bash
