@@ -1,7 +1,4 @@
-import express, {
-  type Request,
-  type Response
-} from 'express';
+import express from 'express';
 import cors from 'cors';
 import { ENV_CONFIG } from '@/constants';
 import { requestLogger } from '@/middleware';
@@ -16,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(requestLogger);
 
-app.get('/', (_: Request, response: Response) => {
+app.get('/', (_, response) => {
   response.status(200).json({
     env: ENV_CONFIG.env,
     message: 'Api is up & running!!!'
@@ -25,14 +22,14 @@ app.get('/', (_: Request, response: Response) => {
 
 routesList.forEach(route => app.use(route.path, route.router));
 
-// /* 404 Handler - To be written at last */
-// app.all('*', (req: Request, res: Response) => {
-//   const notFoundError = `No route exists for this endpoint: "${req.originalUrl}"`;
-//   return sendErrorResponse(res, {
-//     statusCode: 404,
-//     message: '404 - Not Found',
-//     error: notFoundError,
-//   });
-// });
+/* 404 Handler - To be written at last */
+app.use((req, res) => {
+  const notFoundError = `No route exists for this endpoint: "${req.originalUrl}"`;
+  return sendErrorResponse(res, {
+    statusCode: 404,
+    message: '404 - Not Found',
+    error: notFoundError,
+  });
+});
 
 export default app;
