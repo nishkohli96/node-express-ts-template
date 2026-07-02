@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "set-up": "sh setup.sh",
+    "set-up": "bash setup.sh",
     "dev": "nodemon --exec 'ts-node -r tsconfig-paths/register src/index.ts'",
     "build": "rimraf dist && tsc && tsc-alias",
     "start": "pm2-runtime start ecosystem.config.js",
