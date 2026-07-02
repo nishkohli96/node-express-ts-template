@@ -1,17 +1,43 @@
 #!/bin/bash
 
 # Exit immediately if any command fails (i.e., returns a non-zero exit code).
-set -e
+set -euo pipefail
+
+REQUIRED_PNPM_VERSION="11.9.0"
 
 echo '🏁 Initiating Setup...'
 echo "🔍 Checking for global dependencies..."
 
-# Check for pnpm
-if ! command -v pnpm &> /dev/null; then
-  echo "📦 pnpm not found. Installing..."
-  npm install -g pnpm@10.10.0
+# Load NVM
+export NVM_DIR="$HOME/.nvm"
+
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
 else
-  echo "✅ pnpm is already installed."
+  echo "❌ nvm is not installed."
+  exit 1
+fi
+
+# Setup Node version
+if [ ! -f ".nvmrc" ]; then
+  echo "❌ .nvmrc not found."
+  exit 1
+fi
+echo "🔧 Using Node version from .nvmrc..."
+nvm install
+nvm use
+echo "✅ Node version: $(node -v)"
+
+# exit on unset variable; safe now, nvm sourcing done
+set -u
+
+# Check for pnpm
+echo "🔍 Checking for pnpm..."
+if [ "$(pnpm -v 2>/dev/null || true)" != "$REQUIRED_PNPM_VERSION" ]; then
+  echo "📦 Installing pnpm@$REQUIRED_PNPM_VERSION..."
+  npm install -g pnpm@$REQUIRED_PNPM_VERSION
+else
+  echo "✅ pnpm@$REQUIRED_PNPM_VERSION already installed."
 fi
 
 # Check for npm-check-updates
@@ -30,8 +56,13 @@ else
   echo "✅ pm2 is already installed."
 fi
 
+# Clean old dependencies
+echo "🧹 Removing old dependencies..."
+find . -name node_modules -type d -prune -exec rm -rf {} + 2>/dev/null || true
+
+# Install dependencies
 echo "📁 Installing project dependencies..."
-pnpm install
+pnpm install --frozen-lockfile
 
 echo "🛠️  Building the app!"
 pnpm build
