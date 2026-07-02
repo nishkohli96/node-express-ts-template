@@ -13,7 +13,7 @@ Express JS Application with Typescript with the following features:
 ## Getting Started
 
 ```bash
-sh setup.sh
+bash setup.sh
 ```
 
 The above command executes the `setup.sh` script to set up the project by:

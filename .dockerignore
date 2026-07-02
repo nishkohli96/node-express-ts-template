@@ -34,3 +34,6 @@ nodemon.json
 *.md
 Dockerfile
 README.md
+
+# AI Agents
+.claude

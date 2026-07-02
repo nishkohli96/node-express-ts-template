@@ -11,23 +11,18 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.14.0]
+        node-version: [24.14.0]
         os: [ubuntu-latest]
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node env
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install pnpm v10.10.0 globally
-        run: npm i -g pnpm@10.10.0
+      - name: 📁 Install Dependencies and build the app 🛠️
+        run: bash setup.sh
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build express-server
-        run: pnpm build
